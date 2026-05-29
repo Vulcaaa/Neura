@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Neura — Cours interactif et visuel sur l'intelligence artificielle : du neurone artificiel au deep learning, supervised learning et reinforcement learning, avec démos jouables." />
+  <meta name="author" content="Neura" />
+  <title>Neura · Comprendre l'Intelligence Artificielle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='none' stroke='%2322d3ee' stroke-width='6'/><circle cx='50' cy='50' r='12' fill='%238b5cf6'/></svg>" />
+</head>
+<body>
+  <!-- Barre de progression de lecture -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#accueil" class="nav__brand">
+      <span class="nav__logo" aria-hidden="true"></span>
+      <span class="nav__name">Neura</span>
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#introduction">Fondations</a>
+      <a href="#neurone">Le neurone</a>
+      <a href="#reseaux">Réseaux</a>
+      <a href="#supervise">Supervisé</a>
+      <a href="#renforcement">Renforcement</a>
+      <a href="#applications">Applications</a>
+    </nav>
+    <button class="nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Points de navigation latéraux -->
+  <nav class="section-dots" id="section-dots" aria-label="Aller à la section"></nav>
+
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="accueil">
+      <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__veil"></div>
+      <div class="hero__content reveal">
+        <span class="hero__badge">Cours interactif · niveau intermédiaire</span>
+        <h1 class="hero__title">
+          Comprendre l'<span class="grad-text">Intelligence Artificielle</span>
+        </h1>
+        <p class="hero__subtitle">
+          Du neurone artificiel au deep learning, du <strong>supervised learning</strong>
+          au <strong>reinforcement learning</strong>. Pas seulement des définitions :
+          des <em>démos que tu manipules</em>, des algorithmes qui apprennent sous tes yeux.
+        </p>
+        <div class="hero__actions">
+          <a href="#introduction" class="btn btn--primary">Commencer le cours</a>
+          <a href="#renforcement" class="btn btn--ghost">Voir un agent apprendre →</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><span class="hero__stat-num" data-count="6">6</span><span class="hero__stat-label">chapitres</span></div>
+          <div class="hero__stat"><span class="hero__stat-num" data-count="4">4</span><span class="hero__stat-label">démos jouables</span></div>
+          <div class="hero__stat"><span class="hero__stat-num" data-count="0">0</span><span class="hero__stat-label">dépendance externe</span></div>
+        </div>
+      </div>
+      <a href="#introduction" class="hero__scroll" aria-label="Défiler vers le bas">
+        <span class="hero__scroll-mouse"></span>
+      </a>
+    </section>
+
+    <!-- ====================== INTRODUCTION ====================== -->
+    <section class="section" id="introduction">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 01 — Fondations</span>
+          <h2 class="section__title">C'est quoi, au juste, « apprendre » ?</h2>
+          <p class="section__lead">
+            L'intelligence artificielle ne consiste pas à écrire des règles à la main.
+            Elle consiste à laisser un programme <strong>découvrir les règles lui-même</strong>
+            à partir de données ou d'expérience. Posons le vocabulaire.
+          </p>
+        </div>
+
+        <div class="venn reveal" aria-hidden="true">
+          <div class="venn__ring venn__ring--ai"><span>Intelligence<br>Artificielle</span></div>
+          <div class="venn__ring venn__ring--ml"><span>Machine<br>Learning</span></div>
+          <div class="venn__ring venn__ring--dl"><span>Deep<br>Learning</span></div>
+        </div>
+        <p class="venn__caption reveal">
+          L'<b style="color:var(--cyan)">IA</b> est le grand domaine (faire faire à une machine
+          des tâches « intelligentes »). Le <b style="color:var(--violet)">Machine Learning</b>
+          en est un sous-ensemble : apprendre à partir de données. Le
+          <b style="color:var(--magenta)">Deep Learning</b> est du ML qui empile des couches de
+          neurones pour apprendre des représentations de plus en plus abstraites.
+        </p>
+
+        <div class="cards-3 reveal">
+          <article class="card paradigm">
+            <div class="card__icon" style="--c:var(--cyan)">⊞</div>
+            <h3>Apprentissage supervisé</h3>
+            <p>On fournit des <strong>exemples étiquetés</strong> (entrée → bonne réponse).
+              Le modèle apprend à généraliser : prédire le prix d'une maison, reconnaître un chiffre.</p>
+            <span class="card__tag">Chapitre 04</span>
+          </article>
+          <article class="card paradigm">
+            <div class="card__icon" style="--c:var(--violet)">◌</div>
+            <h3>Apprentissage non supervisé</h3>
+            <p>Aucune étiquette. Le modèle cherche la <strong>structure cachée</strong> :
+              regrouper des clients similaires (clustering), compresser, détecter des anomalies.</p>
+            <span class="card__tag">Survol</span>
+          </article>
+          <article class="card paradigm">
+            <div class="card__icon" style="--c:var(--magenta)">⟳</div>
+            <h3>Apprentissage par renforcement</h3>
+            <p>Un <strong>agent</strong> agit dans un environnement, reçoit des
+              <strong>récompenses</strong>, et apprend par essai-erreur la meilleure stratégie.</p>
+            <span class="card__tag">Chapitre 05</span>
+          </article>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline reveal">
+          <h3 class="timeline__title">Une brève histoire, en repères</h3>
+          <ol class="timeline__list">
+            <li><span class="timeline__year">1950</span><div><b>Test de Turing.</b> Alan Turing demande : « une machine peut-elle penser ? »</div></li>
+            <li><span class="timeline__year">1958</span><div><b>Le perceptron</b> de Rosenblatt — le premier neurone artificiel entraînable.</div></li>
+            <li><span class="timeline__year">1986</span><div><b>Rétropropagation</b> popularisée — on sait enfin entraîner des réseaux profonds.</div></li>
+            <li><span class="timeline__year">2012</span><div><b>AlexNet</b> pulvérise ImageNet : le deep learning s'impose en vision.</div></li>
+            <li><span class="timeline__year">2016</span><div><b>AlphaGo</b> bat un champion de Go grâce au renforcement.</div></li>
+            <li><span class="timeline__year">2017+</span><div><b>Transformers</b> &amp; grands modèles de langage — l'IA générative.</div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== LE NEURONE ====================== -->
+    <section class="section section--alt" id="neurone">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 02 — La brique de base</span>
+          <h2 class="section__title">Le neurone artificiel</h2>
+          <p class="section__lead">
+            Tout réseau, aussi gigantesque soit-il, est fait de cette unité minuscule.
+            Un neurone fait deux choses : une <strong>somme pondérée</strong> de ses entrées,
+            puis il la fait passer dans une <strong>fonction d'activation</strong>.
+            Manipule les curseurs et regarde le résultat changer.
+          </p>
+        </div>
+
+        <div class="neuron-lab reveal">
+          <div class="neuron-lab__viz panel">
+            <canvas id="neuron-canvas"></canvas>
+            <div class="neuron-lab__formula">
+              <span>z = </span>
+              <span class="eq-term" id="eq-w1">w₁·x₁</span> +
+              <span class="eq-term" id="eq-w2">w₂·x₂</span> +
+              <span class="eq-term" id="eq-w3">w₃·x₃</span> +
+              <span class="eq-term" id="eq-b">b</span>
+              <span> = <b id="neuron-z">0.00</b></span>
+            </div>
+            <div class="neuron-lab__output">
+              a = <span id="neuron-act-name">σ</span>(z) =
+              <b id="neuron-output" class="neuron-lab__a">0.50</b>
+            </div>
+          </div>
+
+          <div class="neuron-lab__controls panel">
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Entrées</span>
+              <label class="slider"><span>x₁</span><input type="range" id="x1" min="-1" max="1" step="0.01" value="0.5"><output id="x1-val">0.50</output></label>
+              <label class="slider"><span>x₂</span><input type="range" id="x2" min="-1" max="1" step="0.01" value="-0.3"><output id="x2-val">-0.30</output></label>
+              <label class="slider"><span>x₃</span><input type="range" id="x3" min="-1" max="1" step="0.01" value="0.8"><output id="x3-val">0.80</output></label>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Poids &amp; biais</span>
+              <label class="slider slider--w"><span>w₁</span><input type="range" id="w1" min="-2" max="2" step="0.01" value="1.2"><output id="w1-val">1.20</output></label>
+              <label class="slider slider--w"><span>w₂</span><input type="range" id="w2" min="-2" max="2" step="0.01" value="-0.8"><output id="w2-val">-0.80</output></label>
+              <label class="slider slider--w"><span>w₃</span><input type="range" id="w3" min="-2" max="2" step="0.01" value="0.5"><output id="w3-val">0.50</output></label>
+              <label class="slider slider--b"><span>b</span><input type="range" id="bias" min="-2" max="2" step="0.01" value="0.1"><output id="bias-val">0.10</output></label>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Fonction d'activation</span>
+              <div class="segmented" id="neuron-activation" role="tablist">
+                <button class="is-active" data-act="sigmoid">Sigmoïde</button>
+                <button data-act="tanh">tanh</button>
+                <button data-act="relu">ReLU</button>
+                <button data-act="leaky">Leaky</button>
+              </div>
+              <canvas id="activation-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="note reveal">
+          <b>Pourquoi une fonction d'activation ?</b> Sans elle, empiler des neurones reviendrait à
+          une simple multiplication de matrices — donc une seule transformation linéaire. La
+          non-linéarité (le « coude » de ReLU, la courbe en S de la sigmoïde) est ce qui permet à
+          un réseau d'approximer des fonctions <em>arbitrairement complexes</em>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== RÉSEAUX ====================== -->
+    <section class="section" id="reseaux">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 03 — On empile</span>
+          <h2 class="section__title">Réseaux de neurones &amp; propagation</h2>
+          <p class="section__lead">
+            On range les neurones en <strong>couches</strong>. L'information circule de gauche
+            (entrée) à droite (sortie) : c'est la <strong>propagation avant</strong>.
+            Chaque connexion porte un poids. Clique pour envoyer un signal et observe l'onde d'activation.
+          </p>
+        </div>
+
+        <div class="network-lab reveal panel">
+          <canvas id="network-canvas"></canvas>
+          <div class="network-lab__bar">
+            <button class="btn btn--small btn--primary" id="network-fire">⚡ Propager un signal</button>
+            <label class="switch"><input type="checkbox" id="network-auto" checked><span></span> Animation auto</label>
+            <span class="network-lab__legend">
+              <span class="dot dot--pos"></span> poids positif
+              <span class="dot dot--neg"></span> poids négatif
+            </span>
+          </div>
+        </div>
+
+        <div class="cards-2 reveal">
+          <article class="card">
+            <h3><span class="step-num">1</span> Propagation avant</h3>
+            <p>On présente une entrée, elle traverse les couches, on obtient une prédiction.
+              Chaque couche calcule <code>a = activation(W·x + b)</code>.</p>
+          </article>
+          <article class="card">
+            <h3><span class="step-num">2</span> Rétropropagation</h3>
+            <p>On compare la prédiction à la vérité via une <strong>fonction de perte</strong>.
+              Le gradient de l'erreur remonte le réseau pour ajuster chaque poids :
+              c'est la <strong>descente de gradient</strong>.</p>
+          </article>
+        </div>
+
+        <div class="gradient-explainer reveal">
+          <div class="gradient-explainer__text">
+            <h3>La descente de gradient, en une image</h3>
+            <p>Imagine la perte comme un paysage de collines. L'entraînement, c'est
+              <strong>descendre vers la vallée</strong> à petits pas, dans le sens de la plus
+              forte pente. La taille du pas est le <em>taux d'apprentissage</em> (learning rate).</p>
+            <p class="eq-block">θ ← θ − η · ∇<sub>θ</sub> L(θ)</p>
+            <p class="muted">θ : les paramètres · η : le pas · ∇L : le gradient de la perte.
+              Trop grand → on saute la vallée. Trop petit → c'est interminable.</p>
+          </div>
+          <div class="gradient-explainer__viz panel">
+            <canvas id="gradient-canvas"></canvas>
+            <button class="btn btn--small btn--ghost" id="gradient-roll">↻ Relancer la bille</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SUPERVISED LEARNING ====================== -->
+    <section class="section section--alt" id="supervise">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 04 — Apprendre avec un prof</span>
+          <h2 class="section__title">Apprentissage supervisé</h2>
+          <p class="section__lead">
+            On dispose d'un jeu de données <strong>étiqueté</strong> : pour chaque entrée, la bonne
+            réponse est connue. Le but : apprendre une fonction qui <strong>généralise</strong> à des
+            données jamais vues. Deux grandes familles : la <strong>régression</strong> (prédire un
+            nombre) et la <strong>classification</strong> (prédire une catégorie).
+          </p>
+        </div>
+
+        <!-- DÉMO 1 : Régression linéaire -->
+        <h3 class="demo-title reveal"><span class="demo-title__pill" style="--c:var(--cyan)">Démo</span> Régression linéaire &amp; gradient descent</h3>
+        <p class="demo-intro reveal">
+          Clique dans le repère pour ajouter des points, puis lance l'entraînement.
+          La droite <span style="color:var(--cyan)">y = a·x + b</span> ajuste <em>réellement</em> ses
+          paramètres par descente de gradient pour minimiser l'erreur quadratique moyenne (MSE).
+        </p>
+        <div class="reg-lab reveal panel">
+          <div class="reg-lab__main">
+            <canvas id="regression-canvas"></canvas>
+            <p class="reg-lab__hint">Clique pour ajouter un point · le repère démarre avec un nuage de démonstration</p>
+          </div>
+          <div class="reg-lab__side">
+            <div class="stat-grid">
+              <div class="stat"><span class="stat__label">Pente a</span><b id="reg-slope">0.00</b></div>
+              <div class="stat"><span class="stat__label">Ordonnée b</span><b id="reg-intercept">0.00</b></div>
+              <div class="stat"><span class="stat__label">Perte (MSE)</span><b id="reg-loss" class="stat--accent">—</b></div>
+              <div class="stat"><span class="stat__label">Itération</span><b id="reg-epoch">0</b></div>
+            </div>
+            <label class="slider slider--block"><span>Taux d'apprentissage η</span>
+              <input type="range" id="reg-lr" min="0.001" max="0.2" step="0.001" value="0.03">
+              <output id="reg-lr-val">0.030</output>
+            </label>
+            <canvas id="reg-loss-canvas" class="mini-chart"></canvas>
+            <div class="btn-row">
+              <button class="btn btn--small btn--primary" id="reg-train">▶ Entraîner</button>
+              <button class="btn btn--small btn--ghost" id="reg-reset">Réinitialiser</button>
+              <button class="btn btn--small btn--ghost" id="reg-clear">Vider</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉMO 2 : Classification (mini playground) -->
+        <h3 class="demo-title reveal"><span class="demo-title__pill" style="--c:var(--violet)">Démo</span> Un vrai réseau qui apprend une frontière</h3>
+        <p class="demo-intro reveal">
+          Voici un perceptron multicouche (MLP) entraîné en direct dans ton navigateur — forward
+          <em>et</em> rétropropagation, codés à la main. Il apprend à séparer deux classes. Le fond
+          coloré est sa <strong>frontière de décision</strong> : regarde-la se sculpter au fil des époques.
+        </p>
+        <div class="clf-lab reveal panel">
+          <div class="clf-lab__main">
+            <canvas id="clf-canvas"></canvas>
+          </div>
+          <div class="clf-lab__side">
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Jeu de données</span>
+              <div class="segmented segmented--wrap" id="clf-dataset">
+                <button class="is-active" data-ds="circle">Cercle</button>
+                <button data-ds="xor">XOR</button>
+                <button data-ds="moons">Lunes</button>
+                <button data-ds="spiral">Spirale</button>
+              </div>
+            </div>
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Activation des couches cachées</span>
+              <div class="segmented" id="clf-activation">
+                <button class="is-active" data-act="tanh">tanh</button>
+                <button data-act="relu">ReLU</button>
+                <button data-act="sigmoid">Sigmoïde</button>
+              </div>
+            </div>
+            <label class="slider slider--block"><span>Taux d'apprentissage η</span>
+              <input type="range" id="clf-lr" min="0.005" max="0.5" step="0.005" value="0.1">
+              <output id="clf-lr-val">0.100</output>
+            </label>
+            <div class="stat-grid stat-grid--2">
+              <div class="stat"><span class="stat__label">Époque</span><b id="clf-epoch">0</b></div>
+              <div class="stat"><span class="stat__label">Perte</span><b id="clf-loss" class="stat--accent">—</b></div>
+            </div>
+            <canvas id="clf-loss-canvas" class="mini-chart"></canvas>
+            <div class="clf-lab__arch">Architecture : 2 → 16 → 16 → 1</div>
+            <div class="btn-row">
+              <button class="btn btn--small btn--primary" id="clf-train">▶ Entraîner</button>
+              <button class="btn btn--small btn--ghost" id="clf-reset">Recommencer</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-3 reveal">
+          <article class="card mini">
+            <h4>Fonction de perte</h4>
+            <p>Mesure l'écart prédiction / vérité. <b>MSE</b> pour la régression,
+              <b>entropie croisée</b> pour la classification.</p>
+          </article>
+          <article class="card mini">
+            <h4>Train / Validation / Test</h4>
+            <p>On entraîne sur un jeu, on règle sur un autre, on évalue sur un troisième —
+              jamais vu — pour mesurer la vraie généralisation.</p>
+          </article>
+          <article class="card mini">
+            <h4>Sur-apprentissage</h4>
+            <p>Un modèle trop complexe « mémorise » le bruit du jeu d'entraînement et
+              échoue sur le reste. La <b>régularisation</b> combat ça.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== REINFORCEMENT LEARNING ====================== -->
+    <section class="section" id="renforcement">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 05 — Apprendre par l'expérience</span>
+          <h2 class="section__title">Apprentissage par renforcement</h2>
+          <p class="section__lead">
+            Ici, pas de bonnes réponses fournies. Un <strong>agent</strong> explore un
+            <strong>environnement</strong>, choisit des <strong>actions</strong>, et reçoit des
+            <strong>récompenses</strong>. Son objectif : maximiser la récompense cumulée. Il apprend
+            une <strong>politique</strong> — quoi faire dans chaque situation — uniquement par essai-erreur.
+          </p>
+        </div>
+
+        <!-- Boucle RL -->
+        <div class="rl-loop reveal">
+          <div class="rl-loop__node rl-loop__node--agent">
+            <span class="rl-loop__icon">🤖</span><b>Agent</b><small>choisit une action</small>
+          </div>
+          <div class="rl-loop__arrow rl-loop__arrow--down">action <i>aₜ</i> →</div>
+          <div class="rl-loop__node rl-loop__node--env">
+            <span class="rl-loop__icon">🌐</span><b>Environnement</b><small>change d'état</small>
+          </div>
+          <div class="rl-loop__arrow rl-loop__arrow--up">← état <i>sₜ₊₁</i>, récompense <i>rₜ₊₁</i></div>
+        </div>
+
+        <div class="def-grid reveal">
+          <div class="def"><b>État (s)</b> ce que perçoit l'agent</div>
+          <div class="def"><b>Action (a)</b> ce qu'il peut faire</div>
+          <div class="def"><b>Récompense (r)</b> le signal de feedback</div>
+          <div class="def"><b>Politique (π)</b> sa stratégie : s → a</div>
+        </div>
+
+        <!-- DÉMO : Q-learning gridworld -->
+        <h3 class="demo-title reveal"><span class="demo-title__pill" style="--c:var(--magenta)">Démo phare</span> Un agent qui apprend à s'échapper</h3>
+        <p class="demo-intro reveal">
+          L'agent <b>🤖</b> doit rejoindre la sortie <b>🎯</b> en évitant la lave <b>🔥</b>. Au départ
+          il ne sait <em>rien</em>. Par <strong>Q-learning</strong>, il met à jour une estimation de la
+          valeur de chaque action. Active l'entraînement et regarde la « carte de valeur » et les
+          flèches de politique se former. Tu peux <b>dessiner</b> des murs, déplacer la sortie et la lave.
+        </p>
+        <div class="rl-lab reveal panel">
+          <div class="rl-lab__main">
+            <canvas id="rl-canvas"></canvas>
+          </div>
+          <div class="rl-lab__side">
+            <div class="stat-grid stat-grid--3">
+              <div class="stat"><span class="stat__label">Épisode</span><b id="rl-episode">0</b></div>
+              <div class="stat"><span class="stat__label">Pas</span><b id="rl-steps">0</b></div>
+              <div class="stat"><span class="stat__label">Récompense</span><b id="rl-reward" class="stat--accent">0</b></div>
+            </div>
+
+            <div class="ctrl-group">
+              <span class="ctrl-group__label">Outil (clic sur la grille)</span>
+              <div class="segmented segmented--wrap" id="rl-tool">
+                <button class="is-active" data-tool="wall">🧱 Mur</button>
+                <button data-tool="goal">🎯 Sortie</button>
+                <button data-tool="lava">🔥 Lave</button>
+                <button data-tool="erase">🧽 Effacer</button>
+              </div>
+            </div>
+
+            <label class="slider slider--block"><span>Exploration ε</span>
+              <input type="range" id="rl-epsilon" min="0" max="1" step="0.01" value="0.3"><output id="rl-epsilon-val">0.30</output></label>
+            <label class="slider slider--block"><span>Apprentissage α</span>
+              <input type="range" id="rl-alpha" min="0.05" max="1" step="0.01" value="0.5"><output id="rl-alpha-val">0.50</output></label>
+            <label class="slider slider--block"><span>Horizon γ (discount)</span>
+              <input type="range" id="rl-gamma" min="0.5" max="0.999" step="0.001" value="0.95"><output id="rl-gamma-val">0.950</output></label>
+            <label class="slider slider--block"><span>Vitesse</span>
+              <input type="range" id="rl-speed" min="1" max="100" step="1" value="40"><output id="rl-speed-val">40</output></label>
+
+            <div class="checks">
+              <label class="switch"><input type="checkbox" id="rl-show-values" checked><span></span> Carte de valeur</label>
+              <label class="switch"><input type="checkbox" id="rl-show-policy" checked><span></span> Politique (flèches)</label>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn--small btn--primary" id="rl-train">▶ Entraîner</button>
+              <button class="btn btn--small btn--ghost" id="rl-reset">Réinitialiser Q</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bellman reveal">
+          <h3>Le cœur du réacteur : l'équation de Bellman</h3>
+          <p class="eq-block eq-block--big">
+            Q(s,a) ← Q(s,a) + α · [ r + γ · max<sub>a'</sub> Q(s',a') − Q(s,a) ]
+          </p>
+          <div class="bellman__legend">
+            <span><b style="color:var(--magenta)">α</b> à quel point on corrige notre estimation</span>
+            <span><b style="color:var(--cyan)">γ</b> l'importance des récompenses <em>futures</em></span>
+            <span><b style="color:var(--amber)">ε</b> probabilité d'explorer au hasard plutôt que d'exploiter</span>
+          </div>
+          <p class="muted">
+            En clair : la valeur d'une action = la récompense immédiate <em>plus</em> la meilleure
+            valeur que je peux espérer ensuite. Le dilemme central est <strong>exploration vs
+            exploitation</strong> : essayer du nouveau, ou capitaliser sur ce qu'on sait déjà ?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== APPLICATIONS ====================== -->
+    <section class="section section--alt" id="applications">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Chapitre 06 — Dans le monde réel</span>
+          <h2 class="section__title">Où vit l'IA aujourd'hui</h2>
+          <p class="section__lead">Les mêmes briques — neurones, gradient, récompense — alimentent des systèmes très différents.</p>
+        </div>
+        <div class="apps">
+          <article class="app reveal" style="--c:var(--cyan)"><span class="app__emoji">👁️</span><h3>Vision par ordinateur</h3><p>Diagnostic médical sur imagerie, voitures autonomes, contrôle qualité. Surtout du <b>supervisé</b> (CNN).</p></article>
+          <article class="app reveal" style="--c:var(--violet)"><span class="app__emoji">💬</span><h3>Langage &amp; LLM</h3><p>Traduction, assistants, génération de code. Des <b>Transformers</b> pré-entraînés puis alignés par renforcement (RLHF).</p></article>
+          <article class="app reveal" style="--c:var(--magenta)"><span class="app__emoji">🎮</span><h3>Jeux &amp; stratégie</h3><p>AlphaGo, StarCraft, échecs. Le terrain de jeu historique du <b>renforcement</b>.</p></article>
+          <article class="app reveal" style="--c:var(--green)"><span class="app__emoji">🧬</span><h3>Sciences</h3><p>Repliement des protéines (AlphaFold), découverte de médicaments, climat. L'IA accélère la recherche.</p></article>
+          <article class="app reveal" style="--c:var(--amber)"><span class="app__emoji">🤖</span><h3>Robotique</h3><p>Préhension, locomotion, drones. <b>Renforcement</b> + simulation pour apprendre des gestes.</p></article>
+          <article class="app reveal" style="--c:var(--cyan)"><span class="app__emoji">🛡️</span><h3>Recommandation &amp; sécurité</h3><p>Flux personnalisés, détection de fraude et d'anomalies — souvent du <b>non supervisé</b>.</p></article>
+        </div>
+
+        <div class="ethics note note--warn reveal">
+          <b>⚠️ Et l'esprit critique ?</b> Un modèle reflète ses données : biais, angles morts,
+          erreurs de confiance. Comprendre <em>comment</em> il apprend — ce que tu viens de faire —
+          est la meilleure défense pour l'utiliser de façon responsable.
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== RESSOURCES ====================== -->
+    <section class="section" id="ressources">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Pour aller plus loin</span>
+          <h2 class="section__title">Glossaire express</h2>
+        </div>
+        <dl class="glossary reveal">
+          <div><dt>Gradient</dt><dd>Vecteur des dérivées partielles ; indique la direction de plus forte pente de la perte.</dd></div>
+          <div><dt>Époque</dt><dd>Un passage complet sur l'ensemble du jeu d'entraînement.</dd></div>
+          <div><dt>Hyperparamètre</dt><dd>Réglage fixé avant l'entraînement (η, architecture, ε…), non appris.</dd></div>
+          <div><dt>Politique (π)</dt><dd>En RL, la fonction qui associe une action à chaque état.</dd></div>
+          <div><dt>Q-value</dt><dd>Valeur attendue d'une action dans un état donné, sur le long terme.</dd></div>
+          <div><dt>Overfitting</dt><dd>Le modèle colle trop aux données d'entraînement et généralise mal.</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand"><span class="nav__logo"></span> Neura</div>
+      <p class="footer__note">Cours interactif construit en HTML / CSS / JavaScript pur — aucune
+        bibliothèque externe. Tous les algorithmes (gradient descent, rétropropagation, Q-learning)
+        s'exécutent en direct dans ton navigateur.</p>
+      <a href="#accueil" class="footer__top">↑ Revenir en haut</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/neuron.js" defer></script>
+  <script src="js/network.js" defer></script>
+  <script src="js/supervised.js" defer></script>
+  <script src="js/reinforcement.js" defer></script>
+</body>
+</html>
