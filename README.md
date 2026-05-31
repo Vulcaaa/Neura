@@ -8,12 +8,16 @@ La particularité : ce ne sont pas que des définitions. Les algorithmes
 (descente de gradient, rétropropagation, Q-learning) **s'exécutent réellement en
 direct dans le navigateur**, sous les yeux de l'étudiant.
 
+**▶️ Démo en ligne : [vulcaaa.github.io/Neura](https://vulcaaa.github.io/Neura/)**
+
 > 100 % HTML / CSS / JavaScript natif. **Aucune dépendance, aucun build, aucune
 > connexion réseau requise.** Tout fonctionne hors-ligne.
 
 ## ▶️ Lancer le site
 
-Ouvre simplement `index.html` dans un navigateur moderne :
+Le plus simple : ouvrir la [démo en ligne](https://vulcaaa.github.io/Neura/).
+
+En local, ouvre `index.html` dans un navigateur moderne :
 
 ```bash
 # directement
@@ -35,7 +39,7 @@ python3 -m http.server 8000   # puis http://localhost:8000
 | 05 | **Apprentissage par renforcement** | **agent Q-learning** dans un labyrinthe éditable |
 | 06 | Applications & éthique | panorama des usages réels |
 
-## 🔬 Les démos « pour de vrai »
+## 🔬 Les démos interactives
 
 - **Neurone** — somme pondérée `z = Σ wᵢxᵢ + b` puis activation (sigmoïde, tanh,
   ReLU, Leaky), avec tracé de la fonction et point courant.
@@ -61,14 +65,6 @@ js/
 ├── supervised.js     # régression linéaire + MLP (forward/backprop maison)
 └── reinforcement.js  # gridworld Q-learning (valeur + politique)
 ```
-
-## ✅ Qualité
-
-- Vérifié au rendu **headless (Chromium / Playwright)** : 0 erreur console/JS,
-  tous les canvas dimensionnés, les 4 démos entraînent réellement, et le layout
-  est **responsive** (desktop / mobile, sans débordement horizontal).
-- Accessibilité : respect de `prefers-reduced-motion`, navigation au clavier,
-  attributs ARIA sur la navigation.
 
 ---
 
